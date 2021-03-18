@@ -1,36 +1,30 @@
+<?php
+session_start();
+
+if (!isset($_SESSION['username'])) {
+    $_SESSION['msg'] = "Vous devez d'abord vous connecter";
+    header('location:  login.php');
+}
+
+if (isset($_GET['logout'])) {
+    session_destroy();
+    unset($_SESSION['username']);
+    header("location:  login.php");
+}
+require_once('templates/base_forum.php');
+require_once('modeles/jeux.php');
+require_once('modeles/topic.php');
+
+
+$Topic = new Topic();
+$liste_topic = $Topic->getTopic();
+
+$Jeux =  new Jeux();
+$liste_jeux = $Jeux->getJeux();
+
+?>
 <section class="wrapper">
-    <?php
-    session_start();
-
-    if (!isset($_SESSION['username'])) {
-        $_SESSION['msg'] = "Vous devez d'abord vous connecter";
-        header('location:  login.php');
-    }
-
-    if (isset($_GET['logout'])) {
-        session_destroy();
-        unset($_SESSION['username']);
-        header("location:  login.php");
-    }
-    require_once('templates/base_forum.php');
-    require_once('modeles/jeux.php');
-    require_once('modeles/topic.php');
-
-
-    $Topic = new Topic();
-    $liste_topic = $Topic->getTopic();
-
-    $Jeux =  new Jeux();
-    $liste_jeux = $Jeux->getJeux();
-
-    ?>
-
-    <!DOCTYPE html>
-    <html>
-
-
-
-    <div id="CarouselCatControls" class="carousel slide" data-interval="false" style="padding-top:7vh">
+    <div id="CarouselCatControls" class="carousel slide" data-interval="false" style="padding-top:2vh">
         <ol class="carousel-indicators">
             <?php
             $j = 0;

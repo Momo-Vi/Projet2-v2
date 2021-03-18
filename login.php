@@ -14,6 +14,7 @@ $login = $log->login();
 <head>
 	<meta charset="utf-8">
 	<title>Connexion</title>
+	<link rel="icon" href="images/icon.png" />
 	<link rel="stylesheet" type="text/css" href="css/style_log_reg.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
@@ -37,16 +38,6 @@ $login = $log->login();
 				</a>
 			</form>
 		</div>
-
-		<ul class="bg-bubbles">
-			<?php
-
-			for ($i = 0; $i < 15; $i++) { ?>
-				<li></li>
-			<?php
-			};
-			?>
-		</ul>
 	</div>
 
 </body>

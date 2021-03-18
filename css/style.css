@@ -6,14 +6,21 @@
     text-align: center;
     border: 1px solid rgb(0, 0, 0);
     border-radius: 10px;
+}
+
+.header_event {
+    width: 70%;
+    margin: -10px auto 40px;
+    color: rgb(0, 0, 0);
+    background-color: rgba(255, 255, 255, 0.4);
+    text-align: center;
+    border: 1px solid rgb(0, 0, 0);
+    border-radius: 10px;
     padding-left: 20px;
     padding-right: 20px;
     padding-top: 10px;
     padding-bottom: 10px;
-}
-
-.describ {
-    padding-top: 7vh;
+    font-size: 22px;
 }
 
 #banniere_image_description {
@@ -28,11 +35,8 @@
 }
 
 #banniere_description2 {
-    margin-bottom: 25px;
-    border-radius: 5px;
     width: 100%;
-    height: 45px;
-    padding-top: 5px;
+    padding: 1px;
     background-color: rgba(24, 24, 24, 0.8);
     color: white;
     font-size: 13px;
@@ -53,9 +57,9 @@
 }
 
 .header_topic {
-    width: 70%;
-    height: 120px;
-    margin: 50px auto 40px;
+    width: 80vw;
+    height: 15vh;
+    margin: 0px auto 40px;
     color: rgb(0, 0, 0);
     background-color: rgba(255, 255, 255, 0.4);
     text-align: center;
@@ -126,6 +130,16 @@ form,
     overflow-y: auto;
 }
 
+.event {
+    width: 70%;
+    height: 70vh;
+    margin: 20px auto 50px;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.4);
+    overflow-y: auto;
+}
+
 .jeux3 {
     width: 70%;
     height: 70vh;
@@ -137,10 +151,10 @@ form,
 }
 
 .topic_comm {
-    width: 70%;
+    width: 80vw;
     height: 65vh;
     margin: 20px auto 50px;
-    padding: 20px;
+    padding: 30px;
     border-radius: 10px;
     background-color: rgba(255, 255, 255, 0.4);
     overflow-y: auto;
@@ -195,16 +209,14 @@ form,
 }
 
 .btnsend {
-    margin-top: auto;
-    margin-left: auto;
     padding: 10px;
     font-size: 13px;
     color: rgb(255, 255, 255);
     background: rgba(141, 12, 22);
     border: none;
     border-radius: 5px;
-    width: auto;
-    float: right;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 .btn_reply {
@@ -260,14 +272,22 @@ section {
 }
 
 .article_topic {
-    padding-top: 7vh
+    padding-top: 4vh
 }
 
 .article_jeux {
     flex: 3;
     width: 100%;
     border-radius: 5px;
-    margin-top: 2%;
+    margin-top: 20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.article_event {
+    flex: 3;
+    width: 100%;
+    border-radius: 5px;
     padding-top: 5px;
     padding-bottom: 5px;
 }
@@ -337,16 +357,14 @@ section {
     transition: 0.5s;
     height: 60px;
     border-bottom: 1px rgba(0, 0, 0, 0.37) solid;
-    width: 100%;
     text-align: center;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
 .sidenav a:hover,
 .offcanvas a:focus {
     color: rgba(255, 0, 0, 0.753);
-    font-size: 24px;
-    letter-spacing: 1px;
-    font-weight: 700;
 }
 
 .sidenav .closebtn {
@@ -365,19 +383,23 @@ section {
     z-index: 10;
     top: 0;
     right: 0;
-    background-color: #111;
+    background-color: rgb(206, 206, 206);
     overflow-x: hidden;
     padding-top: 60px;
     transition: 0.5s;
 }
 
 .sidenav2 a {
-    padding: 8px 8px 8px 32px;
+    padding: 16px 8px 16px 8px;
     text-decoration: none;
-    font-size: 22px;
-    color: #818181;
+    font-size: 20px;
+    color: #313131;
     display: block;
-    transition: 0.5s
+    transition: 0.5s;
+    height: 60px;
+    text-align: center;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
 .sidenav2 a:hover,
@@ -398,26 +420,6 @@ section {
     padding: 15px;
 }
 
-.topnav {
-    background-color: rgb(206, 206, 206);
-    border: 1px black;
-    overflow: hidden;
-    position: fixed;
-    width: 100%;
-    height: 7vh;
-    z-index: 9;
-}
-
-.topnav a {
-    float: left;
-    display: block;
-    color: black;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    font-size: 25px;
-}
-
 .topnav a:hover {
     background-color: #ddd;
     color: black;
@@ -428,22 +430,16 @@ section {
     color: white;
 }
 
-@media screen and (max-height: 450px) {
-    .sidenav {
-        padding-top: 15px;
-    }
-    .sidenav a {
-        font-size: 18px;
-    }
-}
-
 .commenter {
     background-color: rgba(255, 255, 255, 0.2);
     border-radius: 5px;
     border: 1px solid black;
     margin-bottom: 15px;
     padding: 15px;
-    height: 110px
+    height: auto;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 .topic_subject {
@@ -509,7 +505,6 @@ section {
     color: white;
     cursor: pointer;
     padding: 8px;
-    width: auto;
     border: none;
     text-align: center;
     font-size: 18px;
@@ -578,7 +573,7 @@ section {
 }
 
 .card_jeux {
-    height: 20.2vh;
+    height: auto;
     margin-bottom: 10px;
     margin-top: 10px;
     border: 5px solid black;
@@ -587,28 +582,127 @@ section {
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
 
-.ro {
-    border: 1px solid black;
-    height: 20vh;
-    border-radius: .25rem;
-    padding: 0
-}
-
-.co {
-    display: flex;
-    height: 19.8vh;
-}
-
 .boutton {
     text-align: center;
     margin-bottom: 3%;
     margin-top: 2%
 }
 
+.img2 {
+    height: 21.5vh;
+    object-fit: cover;
+}
+
 .img {
+    height: 40vh;
     object-fit: cover;
 }
 
 .span_text-center {
     text-align: center;
+}
+
+.zone-describ {
+    height: 33vh;
+    overflow-y: auto;
+    font-size: 19px;
+}
+
+.article_zone_describ {
+    height: 85vh;
+    margin: 20px;
+    border: 1px solid black;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.4);
+    margin-top: 39px;
+    margin-right: 0px;
+    margin-left: 35px;
+    overflow-y: hidden;
+}
+
+.article_zone_comment {
+    overflow-y: auto;
+    height: 85vh;
+    margin: 20px;
+    border: 1px solid black;
+    padding: 30px;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.4);
+    margin-left: 5px;
+}
+
+@media (max-width: 768px) {
+    .img {
+        height: 18vh;
+    }
+    .img2 {
+        height: 17vh;
+    }
+    .zone-describ {
+        height: 11.5vh;
+        overflow-y: auto;
+    }
+    .article_zone_describ {
+        height: 40vh;
+        margin-top: 5px;
+        margin: 20px;
+        margin-bottom: 0px;
+    }
+    .article_zone_comment {
+        height: 46.5vh;
+        margin: 0px;
+        margin-top: 0px;
+    }
+    .collapsible {
+        font-size: 15px
+    }
+    .pti_collapsible {
+        font-size: 15px
+    }
+    .header_topic {
+        height: 20vh;
+        margin-bottom: 0px;
+    }
+    .topic_comm {
+        height: 63vh
+    }
+    .btnsend {
+        height: 30px;
+    }
+}
+
+@media (max-width: 650px) {
+    .img {
+        height: 13vh;
+    }
+    .img2 {
+        height: 15vh;
+    }
+    .zone-describ {
+        height: 12vh;
+        overflow-y: auto;
+        font-size: 15px;
+    }
+    .article_zone_describ {
+        height: 40vh;
+        margin-top: 5px;
+        margin: 20px;
+        margin-bottom: 0px;
+    }
+    .article_zone_comment {
+        height: 46.5vh;
+        margin: 0px;
+        margin-top: 0px;
+    }
+}
+
+@media (max-width: 425px) {
+    .header_topic {
+        height: 23vh;
+        margin-bottom: 0px;
+    }
+    .topic_comm {
+        height: 60vh
+    }
 }

@@ -25,6 +25,7 @@ $liste_categorie = $Categorie->recupererCategories();
 
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Center Game</title>
     <link rel="icon" href="images/icon.png" />
     <link rel="stylesheet" type="text/css" href="css/style.css">
@@ -49,29 +50,33 @@ $liste_categorie = $Categorie->recupererCategories();
     </div>
 
 
-    <div class="topnav">
-        <nav><b>
-                <a onclick="openNavMenu()">
-                    <i class="fas fa-bars"></i> Menu
-                </a>
-                <div style="float:right">
-                    <a href="index.php?choix=0">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light font-weight-bold" style="font-size:1.3rem;">
+
+        <button class=" navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item text-left ml-3 active">
+                    <a style="color:black;text-decoration:none;" href="index.php?choix=0&error=0">
                         <i class="fas fa-th-list"></i> Liste de jeux
                     </a>
-
-                    <a href="forum.php">
+                </li>
+                <li class="nav-item text-left ml-3">
+                    <a style="color:black;text-decoration:none;" href="forum.php">
                         <i class="far fa-comments"></i> Forum
                     </a>
-
-                    <a href="#"></a>
-
-                    <a href="#" onclick="openNavProfil()">
+                </li>
+                <li class="nav-item text-left ml-3">
+                    <a style="color:black;text-decoration:none;" href="#" onclick="openNavProfil()">
                         <i class="fas fa-user-circle"></i> Profil
                     </a>
-                </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
 
-            </b></nav>
-    </div>
 </body>
 <?php include_once('js/script.php'); ?>
 

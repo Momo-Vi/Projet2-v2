@@ -29,7 +29,7 @@ class LoginBdd extends Modele
                 if (mysqli_num_rows($results) == 1) {
                     $_SESSION['username'] = $username;
                     $_SESSION['id'] = $id_user;
-                    header('location:  index.php?choix=0');
+                    header('location:  index.php?choix=0error=0');
                 } else {
                     array_push($errors, "Mauvais nom de compte/mot de passe");
                 }

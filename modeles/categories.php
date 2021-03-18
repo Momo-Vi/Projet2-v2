@@ -7,7 +7,7 @@ class Categories extends Modele
 
     public function recupererCategories()
     {
-        $sql = "SELECT * FROM categories";
+        $sql = "SELECT * FROM categories ORDER BY name";
         return mysqli_query($this->getBdd(), $sql)->fetch_all(MYSQLI_ASSOC);
     }
 
@@ -18,7 +18,8 @@ class Categories extends Modele
                 FROM jeux J
                 JOIN categoriser C
                 ON C.id_jeux = J.id 
-                AND C.id_categories = $id_cat";
+                AND C.id_categories = $id_cat
+                ORDER BY J.name";
         return mysqli_query($this->getBdd(), $sql);
     }
 

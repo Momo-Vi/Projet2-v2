@@ -25,7 +25,9 @@ $liste_categorie = $Categorie->recupererCategories();
 
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Center Game</title>
+
     <link rel="icon" href="images/icon.png" />
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" type="text/css" href="css/style_log_reg.css">
@@ -42,7 +44,7 @@ $liste_categorie = $Categorie->recupererCategories();
         <?php $j = 0;
         foreach ($liste_categorie as $categorie) { ?>
 
-            <a onclick="closeNavMenu()" data-slide-to="<?= $categorie['id'] - 1; ?>" data-target="#CarouselCatControls" href="index.php?=<?= $categorie['id'] ?>"> <?= $categorie['name']; ?> </a>
+            <a onclick="closeNavMenu()" data-slide-to="<?= $j; ?>" data-target="#CarouselCatControls" href="index.php?=<?= $categorie['id'] ?>"> <?= $categorie['name']; ?> </a>
         <?php
             $j++;
         } ?>
@@ -56,30 +58,34 @@ $liste_categorie = $Categorie->recupererCategories();
     </div>
 
 
-    <div class="topnav">
-        <nav><b>
-                <a onclick="openNavMenu()">
-                    <i class="fas fa-bars"></i> Menu
-                </a>
-                <div style="float:right">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light font-weight-bold" style="font-size:1.3rem;">
 
-                    <a href="event.php">
+        <a class="navbar-brand" href="#" onclick="openNavMenu()"> <i class="fas fa-bars"></i> Categories</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item text-right ml-3 active">
+                    <a style="color:black;text-decoration:none;" href="event.php">
                         <i class="far fa-calendar-alt"></i> Evènement
                     </a>
-
-                    <a href="forum.php">
+                </li>
+                <li class="nav-item text-right ml-3 ">
+                    <a style="color:black;text-decoration:none;" href="forum.php">
                         <i class="far fa-comments"></i> Forum
                     </a>
-
-                    <a href="#"></a>
-
-                    <a href="#" onclick="openNavProfil()">
+                </li>
+                <li class="nav-item text-right ml-3 ">
+                    <a style="color:black;text-decoration:none;" href="#" onclick="openNavProfil()">
                         <i class="fas fa-user-circle"></i> Profil
                     </a>
-                </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
 
-            </b></nav>
-    </div>
 
 </body>
 <?php include_once('js/script.php'); ?>

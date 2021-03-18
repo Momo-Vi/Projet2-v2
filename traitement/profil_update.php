@@ -7,11 +7,11 @@ class UpdateProfil extends Modele
     {
         if (isset($_POST['modif_profil'])) {
             // receive all input values from the form
+            $errors = array();
             $username = mysqli_real_escape_string($this->getBdd(), $_POST['username']);
 
             $nom = mysqli_real_escape_string($this->getBdd(), $_POST['nom']);
             $prenom = mysqli_real_escape_string($this->getBdd(), $_POST['prenom']);
-            $birthday = mysqli_real_escape_string($this->getBdd(), $_POST['birthday']);
             $adresse = mysqli_real_escape_string($this->getBdd(), $_POST['adresse']);
             $num_tel = mysqli_real_escape_string($this->getBdd(), $_POST['num_tel']);
             $pays = mysqli_real_escape_string($this->getBdd(), $_POST['pays']);
@@ -27,7 +27,6 @@ class UpdateProfil extends Modele
             if (empty($email)) {
                 array_push($errors, "Email requis");
             }
-
             if ($password_1 != $password_2) {
                 array_push($errors, "Les deux mots de passe ne correspondent pas");
             }
@@ -40,7 +39,6 @@ class UpdateProfil extends Modele
                 password= $password, 
                 nom = $nom, 
                 prenom = $prenom, 
-                birthday = $birthday, 
                 num_tel = $num_tel, 
                 adresse = $adresse, 
                 pays = $pays
@@ -53,7 +51,8 @@ class UpdateProfil extends Modele
                 $_SESSION['username'] = $username;
                 $_SESSION['id'] = $id_user;
                 $_SESSION['success'] = "Vous etes bien connecter";
-                header('location:  index.php');
+            } else {
+                header('Location:index.php?choix=0&error=1');
             }
         }
     }

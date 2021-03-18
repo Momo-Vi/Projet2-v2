@@ -1,43 +1,40 @@
-<div class="wrapper">
-    <?php
-    session_start();
-    require_once('modeles/categories.php');
-    require_once('modeles/topic_comment.php');
-    require_once('modeles/user.php');
-    require_once('modeles/reply_topic_comment.php');
-    require_once('modeles/like_dislike_topic_comment.php');
-    require_once('modeles/topic.php');
+<?php
+session_start();
+require_once('modeles/categories.php');
+require_once('modeles/topic_comment.php');
+require_once('modeles/user.php');
+require_once('modeles/reply_topic_comment.php');
+require_once('modeles/like_dislike_topic_comment.php');
+require_once('modeles/topic.php');
 
-    require_once('templates/base_topic.php');
+require_once('templates/base_topic.php');
 
-    $ReplyTopicComment = new ReplyTopicComment;
-    $TopicLike = new TopicLikeDislike;
-    $User = new User();
-    $TopicComment = new TopicComment();
-    $Topic = new Topic();
-    $liste_topic = $Topic->getTopic();
+$ReplyTopicComment = new ReplyTopicComment;
+$TopicLike = new TopicLikeDislike;
+$User = new User();
+$TopicComment = new TopicComment();
+$Topic = new Topic();
+$liste_topic = $Topic->getTopic();
 
 
-    if (isset($_GET['topic'])) {
-        $liste_topic_comment = $TopicComment->getTopicComment($_GET['topic']);
-    } else {
-        // rediriger vers l'accueil
-    }
-    ?>
-    <!DOCTYPE html>
-    <html>
+if (isset($_GET['topic'])) {
+    $liste_topic_comment = $TopicComment->getTopicComment($_GET['topic']);
+} else {
+    // rediriger vers l'accueil
+}
+?>
 
-    <body>
-
+<body>
+    <div class="wrapper">
         <article class="article_topic">
             <div class="header_topic">
                 <div>
-                    <h3> Commentaires pour (<?= count($liste_topic_comment) + 1 ?>) </h3>
+                    <h3> Commentaires (<?= count($liste_topic_comment) + 1 ?>) </h3>
                     <form class="form3" style="top:0" method="post" action="Action/add_topic_comment.php" autocomplete="off">
                         <div>
-                            <input type="text" name="comment" size="100%" placeholder="Ajouter un commentaire">
+                            <input class="col-md-9" type="text" name="comment" size="100%" placeholder="Ajouter un commentaire" required>
                             <input hidden="True" name="id_topic" value="<?= $_GET['topic']; ?>">
-                            <button class="btnsend" type="submit">Envoyer <i class="far fa-paper-plane"></i></button>
+                            <button class="btnsend col-md-2" type="submit">Envoyer <i class="far fa-paper-plane"></i></button>
                         </div>
                     </form>
                 </div>
@@ -122,7 +119,5 @@
 
 
         </article>
-</div>
+    </div>
 </body>
-
-</html>

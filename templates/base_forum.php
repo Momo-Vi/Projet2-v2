@@ -26,6 +26,7 @@ $liste_jeux = $Jeux->getJeux();
 
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Center Game</title>
     <link rel="icon" href="images/icon.png" />
     <link rel="stylesheet" type="text/css" href="css/style.css">
@@ -40,9 +41,13 @@ $liste_jeux = $Jeux->getJeux();
     <div id="sideNavigation" class="sidenav">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNavMenu()">&times;</a>
 
-        <?php foreach ($liste_jeux as $jeux) { ?>
-            <a data-slide-to="<?= $jeux['id'] - 1; ?>" data-target="#CarouselCatControls" href="index.php?=<?= $jeux['id'] ?>"> <?= $jeux['name']; ?> </a>
-        <?php } ?>
+        <?php $j = 0;
+        foreach ($liste_jeux as $jeux) { ?>
+            <a onmouseover="MouseOver(this)" onmouseout="MouseOut(this)" data-slide-to="<?= $j; ?>" data-target="#CarouselCatControls" href="index.php?=<?= $jeux['id'] ?>" onclick="closeNavMenu()">
+                <nobr><?= $jeux['name']; ?></nobr>
+            </a>
+        <?php $j++;
+        } ?>
 
     </div>
 
@@ -54,33 +59,38 @@ $liste_jeux = $Jeux->getJeux();
     </div>
 
 
-    <div class="topnav">
-        <nav><b>
-                <a onclick="openNavMenu()">
-                    <i class="fas fa-bars"></i> Menu
-                </a>
-                <div style="float:right"><a href="create_topic.php">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light font-weight-bold" style="font-size:1.3rem;">
+
+        <a class=" navbar-brand" href="#" onclick="openNavMenu()"> <i class="fas fa-bars"></i> Jeux</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item text-right ml-3 active">
+                    <a style="color:black;text-decoration:none;" href="create_topic.php">
                         <i class="far fa-plus-square"></i> Creer un topic
                     </a>
-                    <a href="index.php?choix=0">
+                </li>
+                <li class="nav-item text-right ml-3 active">
+                    <a style="color:black;text-decoration:none;" href="index.php?choix=0&error=0">
                         <i class="fas fa-th-list"></i> Liste de jeux
                     </a>
-
-                    <a href="event.php">
+                </li>
+                <li class="nav-item text-right ml-3 ">
+                    <a style="color:black;text-decoration:none;" href="event.php">
                         <i class="far fa-calendar-alt"></i> Evènement
                     </a>
-
-                    <a href="#"></a>
-
-                    <a href="#" onclick="openNavProfil()">
+                </li>
+                <li class="nav-item text-right ml-3 ">
+                    <a style="color:black;text-decoration:none;" href="#" onclick="openNavProfil()">
                         <i class="fas fa-user-circle"></i> Profil
                     </a>
-                </div>
-
-            </b>
-        </nav>
-    </div>
-
+                </li>
+            </ul>
+        </div>
+    </nav>
 </body>
 <?php include_once('js/script.php'); ?>
 

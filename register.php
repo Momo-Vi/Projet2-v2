@@ -14,6 +14,7 @@ $reg = $register->register();
 <head>
 	<meta charset="utf-8">
 	<title>Inscription</title>
+	<link rel="icon" href="images/icon.png" />
 	<link rel="stylesheet" type="text/css" href="css/style_log_reg.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
@@ -42,9 +43,9 @@ $reg = $register->register();
 
 				<input type="email" name="email" placeholder="Email*" value="<?php echo $email; ?>" required>
 
-				<input type="password" name="password_1" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" placeholder="Mot de passe*" required>
+				<input type="password" name="password_1" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" placeholder="Mot de passe*" required data-toggle="tooltip" data-placement="top" title=" 1 Majuscule / 1 Minuscule / 8 Caractères requis">
 
-				<input type="password" name="password_2" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" placeholder="Confirmer Mot de passe*" required>
+				<input type="password" name="password_2" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" placeholder="Confirmer Mot de passe*" required data-toggle="tooltip" data-placement="top" title="Ressaisir votre mot de passe ">
 
 				<p style="font-size : 15px; margin-top: 5px;">* : champ obligatoire</p>
 				<button type="submit" id="login-button" name="reg_user" onclick="reg()">Creer mon compte</button>
@@ -54,16 +55,6 @@ $reg = $register->register();
 				</a>
 			</form>
 		</div>
-
-		<ul class="bg-bubbles">
-			<?php
-
-			for ($i = 0; $i < 30; $i++) { ?>
-				<li></li>
-			<?php
-			};
-			?>
-		</ul>
 	</div>
 
 </body>

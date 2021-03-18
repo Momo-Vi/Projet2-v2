@@ -1,19 +1,20 @@
+<?php
+session_start();
+
+require_once('templates/base_index.php');
+require_once('modeles/categories.php');
+require_once('modeles/jeux.php');
+
+$Categories = new Categories;
+$Jeux = new Jeux;
+$liste_categorie = $Categories->recupererCategories();
+$choix_select = $_GET['choix'];
+
+?>
+
 <section class="wrapper">
-	<?php
-	session_start();
-
-	require_once('templates/base_index.php');
-	require_once('modeles/categories.php');
-	require_once('modeles/jeux.php');
-
-	$Categories = new Categories;
-	$Jeux = new Jeux;
-	$liste_categorie = $Categories->recupererCategories();
-	$choix_select = $_GET['choix'];
-
-	?>
-	<div id="CarouselCatControls" class="carousel slide" data-interval="false" style="padding-top: 7vh;">
-		<ol class="carousel-indicators">
+	<div id="CarouselCatControls" class="carousel slide" data-interval="false" style="padding-top: 2vh;">
+		<ol class="carousel-indicators" style="z-index: 9">
 			<?php
 			$j = 0;
 			foreach ($liste_categorie as $categorie) {
@@ -50,13 +51,13 @@
 								<button style="width:auto" type="submit"> <i class="fas fa-search"></i></button>
 							</div>
 						</form>
+
 						<div id=" <?= $categorie['id'] ?>" class="header_jeux" data-categorie="<?= $categorie['id'] ?>">
 							<h2><?= $categorie['name']; ?></h2>
 						</div>
 
 
 						<div class="jeux2">
-							<hr>
 
 							<?php
 							if ($choix_select == 0) {
@@ -64,23 +65,25 @@
 									$categorie_list = $Categories->recupererCategorie($game['id'])
 							?>
 									<article class="card card_jeux">
-										<div class=" row no-gutters ro">
-											<div class="col-md-5 co">
-												<img class="img card-img" src="<?= $game['images'] ?>">
+										<div class=" row no-gutters">
+											<div class="col-lg-5">
+												<img class="img2 card-img" src="<?= $game['images'] ?>">
+												<div id="banniere_description2">
+													<h4 style="color: white;text-align:center;"><?= $game['name'] ?></h4>
+												</div>
 											</div>
-											<div class="col-md-7">
-												<div class="card-body">
-													<h5 class="card-title"><b><u><?= $game['name'] ?></u></b></h5>
-													<hr>
-													<div class="boutton">
+											<div class="col-lg-7" style="height:100%;">
+												<div class="card-body" style="height:100%;overflow-y:auto;">
+													<div class="boutton" style="overflow-x:auto; margin-top:30px">
 														<?php foreach ($categorie_list as $cat) { ?>
-															<button type=button class="pti_collapsible" disabled="disabled">
-																<span class="span_text-center"><?= $cat['name'] ?> </span>
+															<button type=button class="pti_collapsible col-md-5" disabled="disabled" style="margin-bottom:5px">
+																<span class="span_text-center "><?= $cat['name'] ?></span>
 															</button>
 														<?php
 														}
 														?>
 													</div>
+													<hr>
 													<a href=" description_jeu.php?jeu=<?= $game['id'] ?>">
 														<button type="button" class="collapsible">
 															<span class="span_text-center">Plus d'infos <i class="fas fa-info-circle"></i> </span>
@@ -113,4 +116,9 @@
 		</a>
 </section>
 
-</div>
+<script>
+	var toto = <?php echo $_GET['error'] ?>;
+	if (toto == 1) {
+		alert('Erreur dans le champs username ou mot de passe ou email');
+	}
+</script>

@@ -6,13 +6,13 @@ class Jeux extends Modele
 
     public function getJeux()
     {
-        $sql = "SELECT * FROM jeux";
+        $sql = "SELECT * FROM jeux ORDER BY name ASC";
         return mysqli_query($this->getBdd(), $sql)->fetch_all(MYSQLI_ASSOC);
     }
 
     public function getJeuFromID($id_jeu)
     {
-        $sql = "SELECT * FROM jeux WHERE id = $id_jeu";
+        $sql = "SELECT * FROM jeux WHERE id = $id_jeu ORDER by name ASC";
         return mysqli_query($this->getBdd(), $sql)->fetch_object();
     }
 
